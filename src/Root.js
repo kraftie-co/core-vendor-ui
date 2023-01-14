@@ -27,9 +27,9 @@ function Root({ locale, theme }) {
           <GlobalStyles />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<ProductsPage />} />
-              <Route path="/orders" element={<OrdersPage />} />
-              <Route path="/orders" element={<Profile />} />
+              <Route path="/" element={<OrdersPage />} />
+              <Route path="/products" element={<ProductsPage />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="*" element={<NotFound />} />
