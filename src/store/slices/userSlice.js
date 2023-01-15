@@ -5,6 +5,10 @@ const initialState = {
   connectedUser: {
     userId: 1,
   },
+  authState: {
+    canRedirect: false,
+    wantedRoute: '/',
+  },
 };
 
 const login = createAsyncThunk('user/login', async (payload) => {
@@ -32,19 +36,27 @@ const userSlice = createSlice({
     logout: (state) => {
       state.connectedUser = {};
     },
+
+    setWantedRoute: (state, action) => {
+      state.authState.canRedirect = false;
+      state.authState.wantedRoute = action.payload;
+    },
   },
 
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       localStorage.setItem('token', action.payload.token);
+      state.authState.canRedirect = true;
     });
 
     builder.addCase(register.fulfilled, (state, action) => {
       localStorage.setItem('token', action.payload.token);
+      state.authState.canRedirect = true;
     });
 
     builder.addCase(getUserDetails.fulfilled, (state, action) => {
       state.connectedUser = action.payload;
+      state.authState.canRedirect = true;
     });
   },
 });

@@ -1,19 +1,28 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { counterActions } from '../../store/slices/counterSlice';
 import { useTheme } from 'styled-components';
 import Typography from '../../components-export/Typography';
 import { Flex } from 'rebass';
+import { useNavigate } from 'react-router-dom';
+import { userActions } from '../../store/slices/userSlice';
 
-function OrdersPage({ connectedUser, orders, getOrders, editOrder }) {
+function OrdersPage({ connectedUser, setWantedRoute, orders, getOrders, editOrder }) {
   const theme = useTheme();
-  // click on order -> open a modal -> edit order
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!connectedUser.userId) {
+      setWantedRoute('/');
+      navigate('/login');
+    }
+  }, [connectedUser]);
+
   return (
     <Flex>
       <Flex width="80%" marginLeft="10%" backgroundColor={'blue'}>
@@ -27,18 +36,16 @@ function OrdersPage({ connectedUser, orders, getOrders, editOrder }) {
 }
 
 OrdersPage.propTypes = {
-  value: PropTypes.number.isRequired,
-  increase: PropTypes.func.isRequired,
-  decrease: PropTypes.func.isRequired,
+  connectedUser: PropTypes.object.isRequired,
+  setWantedRoute: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  value: state.counter.value,
+  connectedUser: state.user.connectedUser,
 });
 
 const mapDispatchProps = (dispatch) => ({
-  increase: bindActionCreators(counterActions.increase, dispatch),
-  decrease: bindActionCreators(counterActions.decrease, dispatch),
+  setWantedRoute: bindActionCreators(userActions.setWantedRoute, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchProps)(OrdersPage);

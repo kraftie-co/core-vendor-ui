@@ -29,4 +29,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', 'jsx-a11y', 'import', 'jest'],
+  rules: {
+    'react-hooks/exhaustive-deps': 'off',
+  },
 };

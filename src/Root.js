@@ -13,9 +13,9 @@ import { store } from './store';
 import ProductsPage from './containers/ProductsPage';
 import OrdersPage from './containers/OrdersPage';
 import Profile from './containers/Profile';
-import Login from './containers/Login';
-import Register from './containers/Register';
+import Auth from './containers/Auth';
 import NotFound from './containers/NotFound';
+import { AUTH_TYPE } from './constants';
 
 function Root({ locale, theme }) {
   initTranslations(locale);
@@ -30,8 +30,8 @@ function Root({ locale, theme }) {
               <Route path="/" element={<OrdersPage />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/login" element={<Auth type={AUTH_TYPE.LOGIN} />} />
+              <Route path="/register" element={<Auth type={AUTH_TYPE.REGISTER} />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

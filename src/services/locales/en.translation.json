@@ -1,7 +1,15 @@
 {
+  "ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
   "DECREASE": "Decrease",
+  "EMAIL": "Email",
+  "FORGOT_PASSWORD": "Forgot password?",
   "HELLO": "Hello",
   "INCREASE": "Increase",
+  "LOGIN": "Login",
   "PAGE_NOT_FOUND": "Page not found",
+  "PASSWORD": "Password",
+  "PASSWORD_CONFIRMATION": "Password confirmation",
+  "REDIRECT_TO_REGISTER": "Don't have an account? Register",
+  "REGISTER": "Register",
   "RETURN_HOME": "Return to home page"
 }

@@ -14,7 +14,7 @@ function Button({ type, children, onClick, ...otherProps }) {
       onMouseEnter={() => setIsInFocus(true)}
       onMouseLeave={() => setIsInFocus(false)}
       isInFocus={isInFocus}
-      {...otherProps}
+      otherProps={otherProps}
     >
       <CustomTypography type={type} isInFocus={isInFocus}>
         {children}

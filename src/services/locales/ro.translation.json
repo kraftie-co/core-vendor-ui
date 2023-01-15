@@ -1,7 +1,15 @@
 {
+  "ALREADY_HAVE_AN_ACCOUNT": "Ai deja un cont?",
   "DECREASE": "Scade",
+  "EMAIL": "Email",
+  "FORGOT_PASSWORD": "Ai uitat parola?",
   "HELLO": "Bună",
   "INCREASE": "Creşte",
+  "LOGIN": "Autentificare",
   "PAGE_NOT_FOUND": "Pagina nu a fost găsită",
+  "PASSWORD": "Parolă",
+  "PASSWORD_CONFIRMATION": "Confirmare parolă",
+  "REDIRECT_TO_REGISTER": "Nu ai cont? Înregistrează-te",
+  "REGISTER": "Înregistrare",
   "RETURN_HOME": "Înapoi la pagina principală"
 }

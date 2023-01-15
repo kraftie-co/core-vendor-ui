@@ -1,26 +1,31 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { counterActions } from '../../store/slices/counterSlice';
 import { useTheme } from 'styled-components';
 import Typography from '../../components-export/Typography';
-
-function Profile({ value, increase, decrease }) {
+import { useNavigate } from 'react-router-dom';
+import { userActions } from '../../store/slices/userSlice';
+import { Flex } from 'rebass';
+function Profile({ connectedUser, setWantedRoute }) {
   const theme = useTheme();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!connectedUser.userId) {
+      setWantedRoute('/products');
+      navigate('/login');
+    }
+  }, [connectedUser]);
 
   return (
-    <div>
-      <Typography>{value}</Typography>
-      <button onClick={increase} style={{ padding: theme.spacing05, color: theme.text01, ...theme.body }}>
-        {t('INCREASE')}
-      </button>
-      <button onClick={decrease} style={{ padding: theme.spacing05, color: theme.text01, ...theme.body }}>
-        {t('DECREASE')}
-      </button>
-    </div>
+    <Flex height="100%" width="100%" paddingLeft="10%" paddingRight="10%" backgroundColor="#EBFAFE">
+      User id connected
+    </Flex>
   );
 }
 
@@ -31,12 +36,10 @@ Profile.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  value: state.counter.value,
+  connectedUser: state.user.connectedUser,
 });
 
 const mapDispatchProps = (dispatch) => ({
-  increase: bindActionCreators(counterActions.increase, dispatch),
-  decrease: bindActionCreators(counterActions.decrease, dispatch),
+  setWantedRoute: bindActionCreators(userActions.setWantedRoute, dispatch),
 });
-
 export default connect(mapStateToProps, mapDispatchProps)(Profile);

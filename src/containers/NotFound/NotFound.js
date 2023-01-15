@@ -11,7 +11,7 @@ import Typography from '../../components-export/Typography';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'rebass';
 import Button from '../../components-export/Button';
-
+import icon from '../../assets/NotFound.png';
 function NotFound() {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -19,10 +19,11 @@ function NotFound() {
   return (
     <Flex justifyContent="center" alignItems="center">
       <Flex flexDirection="column" alignItems="center">
+        <img src={icon} alt="404" style={{ width: '100%', maxWidth: '500px' }} />
+
         <Typography {...theme.titleBold}>{t('PAGE_NOT_FOUND')}</Typography>
         <Button onClick={() => navigate('/')}>{t('RETURN_HOME')}</Button>
       </Flex>
-      {/* <NotFoundIcon></NotFoundIcon> */}
     </Flex>
   );
 }

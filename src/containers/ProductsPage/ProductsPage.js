@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
@@ -9,12 +8,15 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 import * as Styled from './ProductsPage.styled';
+import { userActions } from '../../store/slices/userSlice';
 
-function ProductsPage({ connectedUser }) {
+function ProductsPage({ connectedUser, setWantedRoute }) {
   // const { t } = useTranslation();
   const navigate = useNavigate();
+
   useEffect(() => {
     if (!connectedUser.userId) {
+      setWantedRoute('/products');
       navigate('/login');
     }
   }, [connectedUser]);
@@ -28,6 +30,7 @@ function ProductsPage({ connectedUser }) {
 
 ProductsPage.propTypes = {
   connectedUser: PropTypes.object.isRequired,
+  setWantedRoute: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -35,8 +38,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchProps = (dispatch) => ({
-  // increase: bindActionCreators(counterActions.increase, dispatch),
-  // decrease: bindActionCreators(counterActions.decrease, dispatch),
+  setWantedRoute: bindActionCreators(userActions.setWantedRoute, dispatch),
 });
 
 export default connect(mapStateToProps, mapDispatchProps)(ProductsPage);
