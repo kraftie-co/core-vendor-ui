@@ -1,15 +1,14 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import { counterActions } from '../../store/slices/counterSlice';
-import { useTheme } from 'styled-components';
-import Typography from '../../components-export/Typography';
 import { useNavigate } from 'react-router-dom';
 import { Flex } from 'rebass';
+import { useTheme } from 'styled-components';
+
+import { counterActions } from '../../store/slices/counterSlice';
+import Typography from '../../components-export/Typography';
 import Button from '../../components-export/Button';
 import icon from '../../assets/NotFound.png';
 function NotFound() {

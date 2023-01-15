@@ -1,6 +1,7 @@
 {
   "ALREADY_HAVE_AN_ACCOUNT": "Ai deja un cont?",
   "DECREASE": "Scade",
+  "EDITING_PRODUCT_WITH_ID": "Se editează produsul cu identificatorul",
   "EMAIL": "Email",
   "FORGOT_PASSWORD": "Ai uitat parola?",
   "HELLO": "Bună",
@@ -11,5 +12,6 @@
   "PASSWORD_CONFIRMATION": "Confirmare parolă",
   "REDIRECT_TO_REGISTER": "Nu ai cont? Înregistrează-te",
   "REGISTER": "Înregistrare",
-  "RETURN_HOME": "Înapoi la pagina principală"
+  "RETURN_HOME": "Înapoi la pagina principală",
+  "YOUR_PRODUCTS": "Produsele tale"
 }

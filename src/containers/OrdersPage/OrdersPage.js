@@ -5,11 +5,11 @@ import PropTypes from 'prop-types';
 import { t } from 'i18next';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-
-import { useTheme } from 'styled-components';
-import Typography from '../../components-export/Typography';
 import { Flex } from 'rebass';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from 'styled-components';
+
+import Typography from '../../components-export/Typography';
 import { userActions } from '../../store/slices/userSlice';
 
 function OrdersPage({ connectedUser, setWantedRoute, orders, getOrders, editOrder }) {
